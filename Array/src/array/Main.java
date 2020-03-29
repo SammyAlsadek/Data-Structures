@@ -8,17 +8,13 @@ public class Main
         Array<Integer> array = new Array();
         
         array.add(1);
-        array.add(1);
-        array.add(1);
-        array.add(1);
-        array.add(1);
-        array.add(1);
-        array.add(1);
-        array.add(1);
-        array.add(1);
-        array.add(1);
+        array.add(2);
+        array.add(3);
+        array.add(4);
+        array.add(5);
+        array.add(6);
         
-        System.out.printf("Size of Array: %d%n", array.size());
+        System.out.printf("Size: %d%nIndex: %d%n", array.size(), array.indexOf(0));
     }
     
 }

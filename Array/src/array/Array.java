@@ -6,6 +6,8 @@ public class Array<T extends Object>
     private Object[] array;  // array of any data type
     private int size;   // number of items in array
     
+    ////////////////////////////////////////////////////////////////////////////
+    
     // general constructor in case nothing was passed in 
     public Array()
     {
@@ -19,6 +21,24 @@ public class Array<T extends Object>
         array = new Object[length]; // create an array with the length given
         size = 0;   // size remains 0 until items are added
     }    
+    
+    ////////////////////////////////////////////////////////////////////////////
+    
+    // method to return the index of given values first instance in the array
+    public int indexOf(T item)
+    {
+        int index = 0;  // initialize the index at 0
+        
+        // search for item in the array
+        while(index < size)
+        {
+            if (array[index] == item) return index;
+            index++;
+        }
+        
+        // if item was not found return -1
+        return -1;
+    }
     
     // method to add item into array
     public void add(T item)
