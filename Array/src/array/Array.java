@@ -37,13 +37,16 @@ public class Array<T extends Object>
             
             // set new array to array
             array = new_array;
-            
-            //add item
-            add(item);
         }
         
         // allocate item into the array and increment the size
         array[size++] = item;
+    }
+    
+    // method that return the number of items in the array
+    public int size()
+    {
+        return size;
     }
     
 }
