@@ -44,10 +44,13 @@ public class Array<T extends Object>
         // check for edge case
         if(index < 0 || index >= size) return;
         
-        // starting from the given index we copy the next item to the current
-        for (int i = index; i < size; i++)
+        // starting from the given index we push the null to the end
+        array[index] = null;
+        for (int i = index; i < (size-1); i++)
         {
+            Object temp = array[i];
             array[i] = array[i + 1];
+            array[i + 1] = temp;
         }
         size--; // decrement the size
     }

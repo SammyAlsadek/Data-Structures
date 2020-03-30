@@ -12,7 +12,6 @@ public class Main
         array.add(3);
         array.add(4);
         array.add(5);
-        array.add(6);
         
         array.removeAt(2);
         array.removeItem(4);
