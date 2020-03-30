@@ -14,7 +14,9 @@ public class Main
         array.add(5);
         array.add(6);
         
+        array.removeAt(3);
         System.out.printf("Size: %d%nIndex: %d%n", array.size(), array.indexOf(0));
+        array.print();
     }
     
 }

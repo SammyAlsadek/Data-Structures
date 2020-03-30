@@ -24,6 +24,30 @@ public class Array<T extends Object>
     
     ////////////////////////////////////////////////////////////////////////////
     
+    // moethod that removes an item at a specific index
+    public void removeAt(int index)
+    {
+        // check for edge case
+        if(index < 0 || index >= size) return;
+        
+        // starting from the given index we copy the next item to the current
+        for (int i = index; i < size; i++)
+        {
+            array[i] = array[i + 1];
+        }
+        size--; // decrement the size
+    }
+    
+    // method to print array
+    public void print()
+    {
+        for(int i = 0; i < size; i++)
+        {
+            System.out.print(array[i]);
+        }
+        System.out.print("\n");
+    }
+    
     // method to return the index of given values first instance in the array
     public int indexOf(T item)
     {
