@@ -58,11 +58,13 @@ public class Array<T extends Object>
     // method to print array
     public void print()
     {
+        System.out.print("[");
         for(int i = 0; i < size; i++)
         {
             System.out.print(array[i]);
+            if(i != (size - 1))System.out.print(", ");
         }
-        System.out.print("\n");
+        System.out.print("]\n");
     }
     
     // method to return the index of given values first instance in the array

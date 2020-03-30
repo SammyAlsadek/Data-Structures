@@ -12,10 +12,19 @@ public class Main
         array.add(3);
         array.add(4);
         array.add(5);
+        array.add(6);
+        array.add(7);
+        array.add(8);
+        array.add(9);
+        array.add(10);
         
-        array.removeAt(2);
-        array.removeItem(4);
-        System.out.printf("Size: %d%nIndex: %d%n", array.size(), array.indexOf(2));
+        array.removeAt(array.indexOf(2));
+        array.removeAt(array.indexOf(4));
+        array.removeAt(array.indexOf(6));
+        array.removeItem(8);
+        array.removeItem(10);
+        
+        System.out.printf("Size of Array: %d%n", array.size());
         array.print();
     }
     
