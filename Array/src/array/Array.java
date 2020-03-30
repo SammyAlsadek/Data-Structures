@@ -24,7 +24,21 @@ public class Array<T extends Object>
     
     ////////////////////////////////////////////////////////////////////////////
     
-    // moethod that removes an item at a specific index
+    // method that removes an item
+    public void removeItem(T item)
+    {
+        // check for edge case
+        if(size == 0) return;
+        
+        // loop through the array and try to find the item and if found remove
+        for (int i = 0; i < size; i++)
+        {
+            if (array[i] == item) removeAt(i);
+        }
+        
+    }
+    
+    // method that removes an item at a specific index
     public void removeAt(int index)
     {
         // check for edge case
