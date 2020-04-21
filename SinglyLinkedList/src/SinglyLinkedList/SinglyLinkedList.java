@@ -173,6 +173,59 @@ public class SinglyLinkedList<T extends Object> {
         // if value was not found
         throw new IllegalArgumentException("Value was not found in the list");
     }
+    
+    // method to remove head of list
+    public T removeHead() {
+        // check to see if the list is empty
+        if (head == null) {
+            return null;
+        }
+        // check to see if the list only has one item
+        if (head.getNext() == null) {
+            T data = (T) head.getData();
+            head = null;
+            tail = null;
+            size--;
+            return data;
+        }
+        Node temp = head;
+        head = temp.getNext(); // declare the second item in the node to be the head
+        T data = (T) temp.getData(); // save the temps data
+        temp = null; // and then make temp = null;
+        size--; // decrement the size
+        return data; // return the old heads data
+    }
+    
+    // method to remove tail of list
+    public T removeTail() {
+        // check to see if the list is empty
+        if (tail == null) {
+            return null;
+        }
+        // check to see if the list only has one item
+        if (head.getNext() == null) {
+            T data = (T) head.getData();
+            head = null;
+            tail = null;
+            size--;
+            return data;
+        }
+        // loop through the list until the next item is the tail
+        Node temp = head;
+        while (temp.getNext() != tail) {
+            temp = temp.getNext();
+        }
+        T data = (T) tail.getData(); // save the temps data
+        tail = temp;
+        temp.setNext(null);
+        size--; // decrement the size
+        return data; // return the old heads data
+    }
+    
+//    // method to remove item at certain index
+//    public T removeAt(int index) {
+//        
+//    }
 
     // method that prints out the list
     public void print() {

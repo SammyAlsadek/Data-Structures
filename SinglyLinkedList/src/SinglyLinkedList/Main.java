@@ -15,6 +15,9 @@ public class Main {
         sll.insertAt(7, 1);
         sll.insertAt(8, 3);
         sll.insertAt(9, 8);
+        
+        sll.removeHead();
+        sll.removeTail();
 
         sll.print();
         System.out.println("Size of list -> " + sll.size());
