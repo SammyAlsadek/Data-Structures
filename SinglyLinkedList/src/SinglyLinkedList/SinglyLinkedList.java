@@ -173,12 +173,12 @@ public class SinglyLinkedList<T extends Object> {
         // if value was not found
         throw new IllegalArgumentException("Value was not found in the list");
     }
-    
+
     // method to remove head of list
     public T removeHead() {
         // check to see if the list is empty
         if (head == null) {
-            return null;
+            throw new IllegalArgumentException("List is empty");
         }
         // check to see if the list only has one item
         if (head.getNext() == null) {
@@ -195,12 +195,12 @@ public class SinglyLinkedList<T extends Object> {
         size--; // decrement the size
         return data; // return the old heads data
     }
-    
+
     // method to remove tail of list
     public T removeTail() {
         // check to see if the list is empty
         if (tail == null) {
-            return null;
+            throw new IllegalArgumentException("List is empty");
         }
         // check to see if the list only has one item
         if (head.getNext() == null) {
@@ -217,15 +217,75 @@ public class SinglyLinkedList<T extends Object> {
         }
         T data = (T) tail.getData(); // save the temps data
         tail = temp;
-        temp.setNext(null);
+        tail.setNext(null);
         size--; // decrement the size
         return data; // return the old heads data
     }
+
+    // method to remove item at certain index
+    public T removeAt(int index) {
+        T data;
+        // check to see if the list is empty
+        if (head == null) {
+            throw new IllegalArgumentException("List is empty");
+        }
+        // check to see if index given is less than 0
+        if (index < 0) {
+            throw new IllegalArgumentException("Index may not be less than 0");
+        }
+        // check to see if argument index is the front of the list
+        else if (index == 0) {
+            data = removeHead();
+        }
+        // check to see if argument index in greater than or equal to size of the array
+        else if (index >= size-1) {
+            data = removeTail();
+        }
+        // if the argument index is removing item in the middle of the array
+        else {
+            Node temp = head;
+            // loop through the array until you arrive at the node behind the target node
+            for (int i = 0; i < index-1; i++) {
+                temp = temp.getNext();
+            }
+            data = (T) temp.getNext().getData();
+            temp.setNext(temp.getNext().getNext());
+            size--;
+        }
+        return data;
+    }
     
-//    // method to remove item at certain index
-//    public T removeAt(int index) {
-//        
-//    }
+    // method to remove certain value from list
+    public T removeValue(T value) {
+        T data;
+        // check to see if the list is empty
+        if (head == null) {
+            throw new IllegalArgumentException("List is empty");
+        }
+        // check to see if the head equals the value 
+        if (head.getData() == value) {
+            data = removeHead();
+        }
+        // check to see if the tail equals the value 
+        else if (tail.getData() == value) {
+            data = removeTail();
+        }
+        else {
+            Node temp = head;
+            int index = 0;
+            // loop throw array to find the value 
+            while (temp.getData() != value && temp.getNext() != null) {
+                index++;
+                temp = temp.getNext();
+            }
+            // if the value was not found throw IllegalArgumentException
+            if (temp.getNext() == null) {
+                throw new IllegalArgumentException("Value not found in list");
+            }
+            data = removeAt(index);
+        }
+        return data;
+    }
 
     // method that prints out the list
     public void print() {
