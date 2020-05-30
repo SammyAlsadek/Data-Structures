@@ -82,29 +82,9 @@ public class Priority_Queue<T> implements Priority_Queue_Interface<T> {
         //if it is insert in the front of the list
         if (this.maxElement == null) {
             this.maxElement = newNode;
-        } //check to see if the new Priority Node has 
-        //the greatest priority value
-        else if (newNode.getPriority() > this.maxElement.priority) {
-            newNode.setNextNode(this.maxElement);
-            this.maxElement = newNode;
         } else {
-            //traverse through the list and find where the new
-            //Priority Node belongs (stop when reaching a node 
-            //with a smaller Priority)
-            PNode prevNode = null;
-            PNode tempNode = this.maxElement;
-            while (newNode.getPriority() <= tempNode.getPriority() && tempNode.getNextNode() != null) {
-                prevNode = tempNode;
-                tempNode = tempNode.getNextNode();
-            }
-            //if our new Priority Nodes value is the minimum
-            //place it at the end of the Queue
-            if (newNode.getPriority() <= tempNode.getPriority() && tempNode.getNextNode() == null) {
-                tempNode.setNextNode(newNode);
-            } else {
-                prevNode.setNextNode(newNode);
-                newNode.setNextNode(tempNode);
-            }
+            //place Node in coorect posistion within the Queue
+            placeNode(newNode);
         }
 
     }
@@ -113,7 +93,7 @@ public class Priority_Queue<T> implements Priority_Queue_Interface<T> {
     public T remove_maximum() {
 
         T value = null;
-
+        
         //check to see if the Queue is Empty
         if (this.maxElement != null) {
             value = (T) this.maxElement.getElement();
@@ -126,49 +106,87 @@ public class Priority_Queue<T> implements Priority_Queue_Interface<T> {
         return value;
 
     }
+    
+    //places Node in proper position withing the queue
+    public void placeNode(PNode newNode) {
+        //check to see if the new Priority Node has 
+        //the greatest priority value
+        if (newNode.getPriority() > this.maxElement.priority) {
+            newNode.setNextNode(this.maxElement);
+            this.maxElement = newNode;
+        } //traverse through the list and find where the new
+        //Priority Node belongs (stop when reaching a node 
+        //with a smaller Priority)
+        else {
+            PNode prevNode = null;
+            PNode tempNode = this.maxElement;
+            while (newNode.getPriority() <= tempNode.getPriority() && tempNode.getNextNode() != null) {
+                prevNode = tempNode;
+                tempNode = tempNode.getNextNode();
+            }
+            //if our new Priority Nodes value is the minimum
+            //place it at the end of the Queue
+            if (newNode.getPriority() <= tempNode.getPriority() && tempNode.getNextNode() == null) {
+                tempNode.setNextNode(newNode);
+                newNode.setNextNode(null);
+            } else {
+                prevNode.setNextNode(newNode);
+                newNode.setNextNode(tempNode);
+            }
+        }
+    }
 
     //search for element in the priority queue and decrease its priority
     //to the new priority level (priority = priority – priority_delta)
     public void decrease(T element, int priority_delta) {
-
+        
+        //loop through the Queue to find the element
+        PNode prevNode = null;
+        PNode tempNode = this.maxElement;
+        while (tempNode != null && tempNode.getElement() != element) {
+            prevNode = tempNode;
+            tempNode = tempNode.getNextNode();
+        }
+        if (tempNode != null && tempNode.getElement() == element) {
+            tempNode.setPriority(tempNode.getPriority() - priority_delta);
+            if (tempNode.getNextNode() != null && tempNode.getPriority() <= tempNode.getNextNode().getPriority()) {
+                if (tempNode == this.maxElement) {
+                    remove_maximum();
+                } else {
+                    //remove the tempNode from its existing position within the list
+                    prevNode.setNextNode(tempNode.getNextNode());
+                }
+                //place Node in coorect posistion within the Queue
+                placeNode(tempNode);
+            }
+        } else {
+            throw new No­Such­Element­Exception("Element not found / Empty List");
+        }
+        
     }
 
     //search for element in the priority queue and increase its priority 
     //to the new priority level (priority = priority + priority_delta)
     public void increase(T element, int priority_delta) {
 
-//        //loop through the Queue to find the element
-//        PNode prevNode = null;
-//        PNode tempNode = this.maxElement;
-//        while (tempNode != null && tempNode.getElement() != element) {
-//            prevNode = tempNode;
-//            tempNode = tempNode.getNextNode();
-//        }
-//        if (tempNode != null && tempNode.getElement() == element) {
-//            tempNode.setPriority(tempNode.getPriority() + priority_delta);
-//            if (prevNode != null && tempNode.getPriority() > prevNode.getPriority()) {
-//                //check to see if the new Priority Node has 
-//                //the greatest priority value
-//                if (tempNode.getPriority() > this.maxElement.priority) {
-//                    tempNode.setNextNode(this.maxElement);
-//                    this.maxElement = tempNode;
-//                } else {
-//                    //traverse through the list and find where the new
-//                    //Priority Node belongs (stop when reaching a node 
-//                    //with a smaller Priority)
-//                    prevNode = null;
-//                    PNode temp2Node = this.maxElement;
-//                    while (tempNode.getPriority() <= temp2Node.getPriority()) {
-//                        prevNode = tempNode;
-//                        tempNode = tempNode.getNextNode();
-//                    }
-//                    prevNode.setNextNode(tempNode);
-//                    tempNode.setNextNode(temp2Node);
-//                }
-//            }
-//        } else {
-//            throw new No­Such­Element­Exception("Element not found / Empty List");
-//        }
+        //loop through the Queue to find the element
+        PNode prevNode = null;
+        PNode tempNode = this.maxElement;
+        while (tempNode != null && tempNode.getElement() != element) {
+            prevNode = tempNode;
+            tempNode = tempNode.getNextNode();
+        }
+        if (tempNode != null && tempNode.getElement() == element) {
+            tempNode.setPriority(tempNode.getPriority() + priority_delta);
+            if (prevNode != null && tempNode.getPriority() > prevNode.getPriority()) {
+                //remove the tempNode from its existing position within the list
+                prevNode.setNextNode(tempNode.getNextNode());
+                //place Node in coorect posistion within the Queue
+                placeNode(tempNode);
+            }
+        } else {
+            throw new No­Such­Element­Exception("Element not found / Empty List");
+        }
 
     }
 
