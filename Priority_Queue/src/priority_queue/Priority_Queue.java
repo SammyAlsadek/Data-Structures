@@ -140,6 +140,8 @@ public class Priority_Queue<T> implements Priority_Queue_Interface<T> {
     //to the new priority level (priority = priority – priority_delta)
     public void decrease(T element, int priority_delta) {
         
+        //check to see if priority_delta is a negative number
+        if (priority_delta < 0) throw new IllegalArgumentException("Cannot input a negative number as an argument");
         //loop through the Queue to find the element
         PNode prevNode = null;
         PNode tempNode = this.maxElement;
@@ -169,6 +171,8 @@ public class Priority_Queue<T> implements Priority_Queue_Interface<T> {
     //to the new priority level (priority = priority + priority_delta)
     public void increase(T element, int priority_delta) {
 
+        //check to see if priority_delta is a negative number
+        if (priority_delta < 0) throw new IllegalArgumentException("Cannot input a negative number as an argument");
         //loop through the Queue to find the element
         PNode prevNode = null;
         PNode tempNode = this.maxElement;
