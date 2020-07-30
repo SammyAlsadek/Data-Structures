@@ -40,8 +40,18 @@ public class Priority_Queue<T extends Comparable<T>> {
         }
         
         //heapify process
-        for (int i = Math.max(0, (this.heapSize/2)-1); i >= 0; i--) {
-            sink(i);
-        }
+        for (int i = Math.max(0, (this.heapSize/2)-1); i >= 0; i--) sink(i);
     }
+    
+    // creates priority queue with O(nlog(n))
+    public Priority_Queue(Collection<T> elements) {
+        this(elements.size());
+        for(T element : elements) add(element);
+    }
+    
+    //////////////////////////////////////////////////////////////////////////////
+    
+    // return true  or false depending on if the Queue is empty
+    public boolean isEmpty() {return (this.heapSize == 0);}
+   
 }
