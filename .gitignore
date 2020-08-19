@@ -21,3 +21,9 @@
 /HashTable_(SeparateChaining)/build/
 /HashTable_(OpenAddressing)/nbproject/private/
 /HashTable_(OpenAddressing)/build/
+/FenwickTree_(BinaryIndexedTree)/nbproject/private/
+/FenwickTree_(BinaryIndexedTree)/build/
+/UnionFind/nbproject/private/
+/PriorityQueue_(Heap)/nbproject/private/
+/IndexedPriorityQueue_(Linked-List)/nbproject/private/
+/IndexedPriorityQueue_(LinkedList)/nbproject/private/
