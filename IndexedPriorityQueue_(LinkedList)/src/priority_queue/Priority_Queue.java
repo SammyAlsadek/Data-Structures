@@ -162,7 +162,7 @@ public class Priority_Queue<T> implements Priority_Queue_Interface<T> {
                 placeNode(tempNode);
             }
         } else {
-            throw new No­Such­Element­Exception("Element not found / Empty List");
+            throw new IllegalArgumentException("Element not found / Empty List");
         }
         
     }
@@ -189,7 +189,7 @@ public class Priority_Queue<T> implements Priority_Queue_Interface<T> {
                 placeNode(tempNode);
             }
         } else {
-            throw new No­Such­Element­Exception("Element not found / Empty List");
+            throw new IllegalArgumentException("Element not found / Empty List");
         }
 
     }

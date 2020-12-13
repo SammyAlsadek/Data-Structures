@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Array/src"/>
+	<classpathentry kind="src" path="BinarySearchTree/src"/>
+	<classpathentry kind="src" path="FenwickTree_(BinaryIndexedTree)/src"/>
+	<classpathentry kind="src" path="HashTable_(OpenAddressing)/src"/>
+	<classpathentry kind="src" path="HashTable_(SeparateChaining)/src"/>
+	<classpathentry kind="src" path="IndexedPriorityQueue_(LinkedList)/src"/>
+	<classpathentry kind="src" path="PriorityQueue_(Heap)/src"/>
+	<classpathentry kind="src" path="Queue/src"/>
+	<classpathentry kind="src" path="SinglyLinkedList/src"/>
+	<classpathentry kind="src" path="Stack/src"/>
+	<classpathentry kind="src" path="UnionFind/src"/>
+	<classpathentry kind="output" path="Array/build/classes"/>
+</classpath>
