@@ -200,6 +200,7 @@ public class AVLTree<T extends Comparable<T>> {
 	// rotates the tree to the left
 	private Node leftRotation(Node node) {
 
+		// perform the left rotation
 		Node newParent = node.right;
 		node.right = newParent.left;
 		newParent.left = node;
@@ -217,6 +218,7 @@ public class AVLTree<T extends Comparable<T>> {
 	// rotates the tree to the right
 	private Node rightRotation(Node node) {
 
+		// perform the right rotation
 		Node newParent = node.left;
 		node.left = newParent.right;
 		newParent.right = node;
@@ -340,28 +342,28 @@ public class AVLTree<T extends Comparable<T>> {
 			node = node.left;
 		return node.value;
 	}
-	
+
 	// inOrder traversal
-    public void inOrder() {
-    	
-    	// if the tree is empty print null
-        if(isEmpty()) {
-            System.out.println("[NULL]");
-            return;
-        }
-        
-        // else continue with the inOrder traversal
-        inOrder(root);
-        
-    }
-    
-    // inOreder traversal 
-    private void inOrder(Node node) {
-        if (node != null) {
-            inOrder(node.left);
-            System.out.print("[" + node.value + "]");
-            inOrder(node.right);
-        }
-    }
+	public void inOrder() {
+
+		// if the tree is empty print null
+		if (isEmpty()) {
+			System.out.println("[NULL]");
+			return;
+		}
+
+		// else continue with the inOrder traversal
+		inOrder(root);
+
+	}
+
+	// inOreder traversal
+	private void inOrder(Node node) {
+		if (node != null) {
+			inOrder(node.left);
+			System.out.print("[" + node.value + "]");
+			inOrder(node.right);
+		}
+	}
 
 }
