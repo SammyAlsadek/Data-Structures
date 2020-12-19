@@ -1,5 +1,9 @@
 package SinglyLinkedList;
 
+/**
+ * @author sammyalsadek
+ *
+ */
 public class SinglyLinkedList<T extends Object> {
 
 	//////////////////////////////////////////////////////////////////////////////
