@@ -1,6 +1,6 @@
 package union_find;
 
-public class Union_Find {
+public class UnionFind {
     
     // number of elements in this union find
     private int size; 
@@ -14,7 +14,7 @@ public class Union_Find {
     //////////////////////////////////////////////////////////////////////////////
     
     // constructor
-    public Union_Find(int size) {
+    public UnionFind(int size) {
     
         if (size <= 0) throw new IllegalArgumentException();
         
