@@ -1,27 +1,26 @@
 package queue;
 
+/**
+ * @author sammyalsadek
+ *
+ */
 public class Main {
 
-    public static void main(String[] args) {
-        Queue queue = new Queue();
-        
-        System.out.println("Size of Queue: " + queue.size());
-        System.out.println("First in Queue: " + queue.peek());
-        
-        for(int i = 0; i < 5; i++)
-            queue.add(i);
-        
-        System.out.println("Size of Queue: " + queue.size());
-        System.out.println("First in Queue: " + queue.element());
-        
-        for(int i = 0; i < 2; i++)
-            System.out.println("Remove -> " + queue.poll());
-        
-        for(int i = 0; i < 3; i++)
-            System.out.println("Remove -> " + queue.remove());
-        
-        System.out.println("Size of Queue: " + queue.size());
-        System.out.println("First in Queue: " + queue.peek());
-    }
-    
+	public static void main(String[] args) {
+
+		// test queue class
+		Queue<Integer> queue = new Queue<Integer>();
+
+		for (int i = 0; i < 10; i++)
+			queue.add(i);
+
+		for (int i = 0; i < 10; i += 2)
+			System.out.println("Removed -> " + queue.poll());
+
+		System.out.println("\nSize of Queue -> " + queue.size());
+		
+		System.out.println("\nFirst in Queue -> " + queue.peek());
+		
+	}
+
 }
